@@ -1,0 +1,88 @@
+{% extends 'starter-page.html' %}
+{% load static %}
+{% block body %}
+
+<div class="px-1 my-5">
+  <h2 class="text-center mb-4">Appointments</h2>
+
+  <div class="table-responsive">
+    <table class="table table-info table-bordered table-hover">
+      <thead class="table-dark">
+        <tr class="w-50">
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Date & Time</th>
+          <th>Department</th>
+          <th>Doctor</th>
+          <th>Message</th>
+
+          <th>action</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        {% for x in appointment %}
+        <tr>
+          <td>{{ x.FullName }}</td>
+          <td>{{ x.Email }}</td>
+          <td>{{ x.Phone }}</td>
+          <td>{{ x.datetime }}</td>
+          <td>{{ x.Department }}</td>
+          <td>{{ x.Doctor }}</td>
+          <td>{{ x.message }}</td>
+          <td>
+            <a href="" class="btn btn-primary">edit</a>
+            <a href="/delete/{{x.id}}" class="btn btn-danger">delete</a>
+            <a href="" class="btn btn-success">Pay</a>
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="7" class="text-center">No appointments available</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="px-1 my-5">
+  <h2 class="text-center mb-4">Contacts</h2>
+
+  <div class="table-responsive">
+    <table class="table table-info table-bordered table-hover">
+      <thead class="table-dark">
+        <tr class="w-50">
+          <th>Name</th>
+          <th>Email</th>
+          <th>Subject</th>
+          <th>Message</th>
+
+          <th>action</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        {% for y in contacts %}
+        <tr>
+          <td>{{ y.Name }}</td>
+          <td>{{ y.Email }}</td>
+          <td>{{ y.Subject }}</td>
+          <td>{{ y.Message }}</td>
+          <td>
+            <a href="" class="btn btn-primary">edit</a>
+            <a href="/delete_con/{{y.id}}" class="btn btn-danger">delete</a>
+            <a href="" class="btn btn-success">Pay</a>
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="7" class="text-center">No appointments available</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}
